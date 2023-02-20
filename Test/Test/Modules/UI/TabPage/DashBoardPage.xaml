@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    iOSSpecific:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:svg="clr-namespace:Xamarin.Forms.Svg;assembly=SvgImageSource"
+    xmlns:local="clr-namespace:Test.Core.Helpers;assembly=Test" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    x:Class="Test.Modules.UI.TabPage.DashBoardPage">
+    <ContentPage.Content>
+            <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,1.5*,*,Auto">
+
+            <Image  HorizontalOptions="End" VerticalOptions="Center" Margin="0,20,15,0">
+                <Image.Source>
+                    <svg:SvgImageSource Source="Test.Core.Resources.logout.svg" Width="30" Height="30" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+             <Image Grid.Row="1" Source="{local:ImageResource Test.Core.Resources.istockphoto-1226886125-170667a.jpg}" BackgroundColor="White" Aspect="Fill"/>
+
+            <ScrollView Grid.Row="2" BackgroundColor="{AppThemeBinding Light=White, Dark=DarkGray}">
+
+                <Grid HorizontalOptions="Fill" VerticalOptions="Start" BackgroundColor="{AppThemeBinding Light=White, Dark=DarkGray}" RowDefinitions="Auto,Auto,Auto,Auto">
+
+                   <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Margin="15,25,15,20" >
+                        <Label Text="{Binding Lblconfiguration}" TextColor="{AppThemeBinding Light=Black, Dark=White}" FontSize="Subtitle"/>
+                        <BoxView Grid.Column="1" HeightRequest="2" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="{AppThemeBinding Light=DarkGray, Dark=White}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" ColumnDefinitions="Auto,*" RowDefinitions="Auto" HorizontalOptions="Center" ColumnSpacing="25">
+                        <Label Text="{Binding Lblswitch}" TextColor="{AppThemeBinding Light=Black, Dark=White}" VerticalOptions="Center"/>
+                        <StackLayout Grid.Column="1" Orientation="Horizontal">
+                           <Label Text="{Binding Lbltheme}" TextColor="{AppThemeBinding Light=Black, Dark=White}" VerticalOptions="Center"/>
+                            <Switch
+                                x:Name="switch"
+                                Toggled="Switch_Toggled"
+                                    ThumbColor="{AppThemeBinding Light=DarkGray, Dark=DarkGray}"
+                                    IsToggled="{Binding IsToogle}"
+                                    OnColor="{AppThemeBinding Light=White, Dark=White}"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Grid.Row="2" ColumnDefinitions="Auto,*" HorizontalOptions="Center" ColumnSpacing="25">
+                        <Label Text="{Binding Lbllanguage}" TextColor="{AppThemeBinding Light=Black, Dark=White}" VerticalOptions="Center"/>
+                        <Picker Grid.Column="1"
+                                Title="{Binding Language}" 
+                                            TitleColor="{AppThemeBinding Light=Black, Dark=White}"
+                                            FontSize="18"
+                                            ItemsSource="{Binding Languages}"
+                                            ItemDisplayBinding="{Binding Name}"
+                                            SelectedItem="{Binding SelectedItem}"
+                                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                            BackgroundColor="{AppThemeBinding Light=White, Dark=DarkGray}"
+                                            TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                            />
+                    </Grid>
+                    <Label Grid.Row="3" TextColor="{AppThemeBinding Light=Black, Dark=White}" HorizontalOptions="Center" Margin="0,30,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Lbldate}" FontSize="14"/>
+                                 <Span Text=" "/>
+                                <Span Text="{Binding Date}" FontAttributes="Bold" />
+
+                            </FormattedString>
+                        </Label.FormattedText>
+
+                    </Label>
+                </Grid>
+            </ScrollView>
+
+            <Grid Grid.Row="3" HeightRequest="120" BackgroundColor="{AppThemeBinding Light=White, Dark=DarkGray}">
+
+                <Grid RowSpacing="0"
+                      Margin="0,25,0,0"
+                      ColumnSpacing="15" BackgroundColor="{AppThemeBinding Light=LightGray, Dark=Gray}"
+                      ColumnDefinitions="*,*">
+                     <Image Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <svg:SvgImageSource Source="Test.Core.Resources.contacts.svg" Width="40" Height="40"/>
+                            </Image.Source>
+                        <Image.Triggers>
+                            <DataTrigger
+                                TargetType="Image"
+                                Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                Value="true">
+                                <Setter
+                                    Property="Source">
+                                    <Setter.Value>
+                                        <svg:SvgImageSource Source="Test.Core.Resources.contacts.svg" Width="40" Height="40" Color="White"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger
+                                TargetType="Image"
+                                Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                Value="false">
+                                <Setter
+                                    Property="Source">
+                                    <Setter.Value>
+                                        <svg:SvgImageSource Source="Test.Core.Resources.contacts.svg" Width="40" Height="40" Color="Black"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Image.Triggers>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Contacts"/>
+                            </Image.GestureRecognizers>
+                      </Image>
+                    <Image Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <svg:SvgImageSource Source="Test.Core.Resource.camera.svg" Width="50" Height="50" Color="{AppThemeBinding Light=Black, Dark=White}"/>
+                            </Image.Source>
+                        <Image.Triggers>
+                            <DataTrigger
+                                TargetType="Image"
+                                Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                Value="true">
+                                <Setter
+                                    Property="Source">
+                                    <Setter.Value>
+                                        <svg:SvgImageSource Source="Test.Core.Resources.camera.svg" Width="50" Height="50" Color="White"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger
+                                TargetType="Image"
+                                Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                Value="false">
+                                <Setter
+                                    Property="Source">
+                                    <Setter.Value>
+                                        <svg:SvgImageSource Source="Test.Core.Resources.camera.svg" Width="50" Height="50" Color="Black"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Image.Triggers>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Multimedia"/>
+                            </Image.GestureRecognizers>
+                      </Image>
+                </Grid>
+
+                <yummy:PancakeView
+                            Grid.Column="0" 
+                            Padding="0"
+                            BackgroundColor="DarkOrange"
+                            CornerRadius="35"
+                            HeightRequest="70"
+                            VerticalOptions="Start" HorizontalOptions="Center"
+                            IsClippedToBounds="false"
+                            Shadow="{yummy:ShadowMarkup Color=#000000,
+                                                        Offset='0,1',
+                                                        BlurRadius={OnPlatform Android=2,
+                                                                               iOS=1}}"
+                            WidthRequest="70" >
+
+                    <Image HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image.Source>
+                                <svg:SvgImageSource Source="Test.Core.Resources.weather.svg" Width="30" Height="30" />
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Weather"/>
+                            </Image.GestureRecognizers>
+                 </Image>
+                </yummy:PancakeView>
+                
+
+            </Grid>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

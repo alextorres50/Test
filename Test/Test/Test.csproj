@@ -1,0 +1,170 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Flurl" Version="3.0.7" />
+    <PackageReference Include="Flurl.Http" Version="3.2.4" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.7.4" />
+    <PackageReference Include="XF.Material" Version="1.8.0" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.Forms.Svg" Version="1.0.3" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.3" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Prism.Forms" />
+    <None Remove="Core\" />
+    <None Remove="Modules\" />
+    <None Remove="Assets\" />
+    <None Remove="Properties\" />
+    <None Remove="Assets\i18n\" />
+    <None Remove="Core\Constants\" />
+    <None Remove="Core\Services\" />
+    <None Remove="Core\Helpers\" />
+    <None Remove="Core\Locator\" />
+    <None Remove="Core\Models\" />
+    <None Remove="Core\Router\" />
+    <None Remove="Core\Resources\" />
+    <None Remove="Modules\Repositories\" />
+    <None Remove="Modules\ViewModels\" />
+    <None Remove="Modules\UI\" />
+    <None Remove="Modules\Models\" />
+    <None Remove="Modules\ViewModels\Init\" />
+    <None Remove="Modules\ViewModels\TabPage\" />
+    <None Remove="Modules\UI\Init\" />
+    <None Remove="Modules\UI\TabPage\" />
+    <None Remove="Core\Services\Interfaces\" />
+    <None Remove="Xam.Plugins.Settings" />
+    <None Remove="Flurl" />
+    <None Remove="Flurl.Http" />
+    <None Remove="Core\UI\" />
+    <None Remove="Xam.Plugin.Connectivity" />
+    <None Remove="Core\Models\WebApi\" />
+    <None Remove="Prism.DryIoc.Forms" />
+    <None Remove="Rg.Plugins.Popup" />
+    <None Remove="Xamarin.Essentials.Interfaces" />
+    <None Remove="XF.Material" />
+    <None Remove="Xamarin.Forms.PancakeView" />
+    <None Remove="Core\Converters\" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="Modules\Repositories\Interfaces\" />
+    <None Remove="Core\Models\WebApi\Contacts\" />
+    <None Remove="Core\Resources\frases-tecnologia.txt" />
+    <None Remove="Modules\ViewModels\Contacts\" />
+    <None Remove="Modules\UI\Contacts\" />
+    <None Remove="Modules\ViewModels\Users\" />
+    <None Remove="Modules\UI\Users\" />
+    <None Remove="Modules\UI\Weather\" />
+    <None Remove="Modules\ViewModels\Weather\" />
+    <None Remove="Xamarin.Forms.Svg" />
+    <None Remove="Core\Resources\istockphoto-1226886125-170667a.jpg" />
+    <None Remove="Core\Resources\personaje-femenino-3d.webp" />
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="Core\Resources\showpassword.svg" />
+    <None Remove="Core\Resources\hidepassword.svg" />
+    <None Remove="Core\Resources\facebook.svg" />
+    <None Remove="Core\Resources\google.svg" />
+    <None Remove="Core\Resources\instagram.svg" />
+    <None Remove="Core\Resources\contacts.svg" />
+    <None Remove="Core\Resources\camera.svg" />
+    <None Remove="Core\Resources\weather.svg" />
+    <None Remove="Core\Models\LocalStorage\" />
+    <None Remove="SkiaSharp" />
+    <None Remove="SkiaSharp.Views.Forms" />
+    <None Remove="Core\Resources\backarrow.svg" />
+    <None Remove="Core\Resources\addbutton.svg" />
+    <None Remove="Core\Resources\deletebutton.svg" />
+    <None Remove="Core\Resources\editbutton.svg" />
+    <None Remove="Core\Resources\logout.svg" />
+    <None Remove="Com.Airbnb.Xamarin.Forms.Lottie" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Assets\i18n\" />
+    <Folder Include="Core\Constants\" />
+    <Folder Include="Core\Services\" />
+    <Folder Include="Core\Helpers\" />
+    <Folder Include="Core\Locator\" />
+    <Folder Include="Core\Models\" />
+    <Folder Include="Core\Router\" />
+    <Folder Include="Core\Resources\" />
+    <Folder Include="Modules\Repositories\" />
+    <Folder Include="Modules\ViewModels\" />
+    <Folder Include="Modules\UI\" />
+    <Folder Include="Modules\Models\" />
+    <Folder Include="Modules\ViewModels\Init\" />
+    <Folder Include="Modules\ViewModels\TabPage\" />
+    <Folder Include="Modules\UI\Init\" />
+    <Folder Include="Modules\UI\TabPage\" />
+    <Folder Include="Core\Services\Interfaces\" />
+    <Folder Include="Core\UI\" />
+    <Folder Include="Core\Models\WebApi\" />
+    <Folder Include="Core\Converters\" />
+    <Folder Include="Modules\Repositories\Interfaces\" />
+    <Folder Include="Core\Models\WebApi\Contacts\" />
+    <Folder Include="Modules\ViewModels\Contacts\" />
+    <Folder Include="Modules\UI\Contacts\" />
+    <Folder Include="Modules\ViewModels\Users\" />
+    <Folder Include="Modules\UI\Users\" />
+    <Folder Include="Modules\UI\Weather\" />
+    <Folder Include="Modules\ViewModels\Weather\" />
+    <Folder Include="Core\Models\LocalStorage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Resources\frases-tecnologia.txt" />
+    <EmbeddedResource Include="Core\Resources\istockphoto-1226886125-170667a.jpg" />
+    <EmbeddedResource Include="Core\Resources\personaje-femenino-3d.webp" />
+    <EmbeddedResource Include="Core\Resources\showpassword.svg" />
+    <EmbeddedResource Include="Core\Resources\hidepassword.svg" />
+    <EmbeddedResource Include="Core\Resources\facebook.svg" />
+    <EmbeddedResource Include="Core\Resources\google.svg" />
+    <EmbeddedResource Include="Core\Resources\instagram.svg" />
+    <EmbeddedResource Include="Core\Resources\contacts.svg" />
+    <EmbeddedResource Include="Core\Resources\camera.svg" />
+    <EmbeddedResource Include="Core\Resources\weather.svg" />
+    <EmbeddedResource Include="Core\Resources\backarrow.svg" />
+    <EmbeddedResource Include="Core\Resources\addbutton.svg" />
+    <EmbeddedResource Include="Core\Resources\deletebutton.svg" />
+    <EmbeddedResource Include="Core\Resources\editbutton.svg" />
+    <EmbeddedResource Include="Core\Resources\logout.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Assets\i18n\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Assets\i18n\AppResources.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Assets\i18n\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Assets\i18n\AppResources.es.Designer.cs">
+      <DependentUpon>AppResources.es.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

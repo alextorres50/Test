@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:Test.Core.Helpers;assembly=Test"
+    xmlns:controls="clr-namespace:Test.Core.UI;assembly=Test"
+    xmlns:constants="clr-namespace:Test.Core.Constants"
+    xmlns:svg="clr-namespace:Xamarin.Forms.Svg;assembly=SvgImageSource"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Test.Modules.UI.Init.LoginPage">
+    <ContentPage.Content>
+    <ScrollView
+        x:Name="scroll"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="4*,6*">
+        <Image Source="{local:ImageResource Test.Core.Resources.personaje-femenino-3d.webp}" BackgroundColor="White" Aspect="Fill"/>
+        <Label VerticalOptions="End" Margin="15,0,0,15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Bienvenido a &#10;" FontSize="24" />
+                            <Span Text="Evertec" FontAttributes="Bold" FontSize="30"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Grid Grid.Row="1" RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto, Auto">
+
+                    <controls:CustomInput
+                        Grid.Row="0"
+                        Margin="40,20,40,0"
+                        ErrorMessage="error email"
+                        Expression="{x:Static constants:Constants.EMAIL_PATTERN}"
+                        ForceFocus="True"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        Text="{Binding Email}" />
+
+                    <controls:CustomInput
+                        Grid.Row="1"
+                        Margin="40,20,40,0"
+                        ErrorMessage="error password"
+                        ForceFocus="False"
+                        IsPassword="{Binding IsPassword}"
+                        HasInfoIcon="True"
+                        SourceIcon="{Binding SourceIcon}"
+                        ShowInfoCommand="{Binding ShowHidePasswordCommand,Mode=TwoWay}"
+                        Placeholder="Password"
+                        Text="{Binding Password}" />
+
+                    <controls:CustomButton
+                        Grid.Row="2"
+                        Margin="{OnPlatform Android='40,50,40,30',
+                                            iOS='40,50,40,30'}"
+                        BackGroundInitialColor="DarkOrange"
+                        BackGroundEndColor="DarkOrange"
+                        ClickCommand="{Binding LoginCommand}"
+                        Enabled="true"
+                        SizeButton="Small"
+                        TextColor="White"
+                        Text="Login" />
+
+                    <Label
+                        Grid.Row="3"
+                        Margin="40,0,40,0"
+                        Text="Olvidaste la contraseña?"
+                        TextColor="Gray" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Olvidates la contraseña?"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Grid
+                        Grid.Row="4"
+                        RowSpacing="0"
+                        ColumnSpacing="15"
+                        RowDefinitions="Auto"
+                        ColumnDefinitions="*,Auto,Auto,Auto,*"
+                        Margin="30,20,30,0">
+
+                        <Image Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <svg:SvgImageSource Source="Test.Core.Resources.instagram.svg" Width="50" Height="50"/>
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Instagram"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <svg:SvgImageSource Source="Test.Core.Resources.facebook.svg" Width="50" Height="50"/>
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Facebook"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Source>
+                                <svg:SvgImageSource Source="Test.Core.Resources.google.svg" Width="50" Height="50"/>
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="Google"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+
+                    <controls:CustomButton
+                        Grid.Row="5"
+                        Margin="{OnPlatform Android='30,20,30,30',
+                                            iOS='30,20,30,30'}"
+                        BackGroundInitialColor="LightGray"
+                        BackGroundEndColor="LightGray"
+                        ClickCommand="{Binding ButtonCommand}"
+                        ClickCommandParameter="Registrarme"
+                        Enabled="true"
+                        SizeButton="Small"
+                        TextColor="Black"
+                        Text="Registrarme" />
+
+                </Grid>
+       
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

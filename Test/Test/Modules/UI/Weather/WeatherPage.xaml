@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:svg="clr-namespace:Xamarin.Forms.Svg;assembly=SvgImageSource"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Test.Modules.UI.Weather.WeatherPage">
+    <ContentPage.Content>
+        <Grid RowSpacing="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Grid.RowDefinitions>
+             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            <Image  HorizontalOptions="Start" VerticalOptions="Start" Margin="15,20,0,0">
+                <Image.Source>
+                    <svg:SvgImageSource Source="Test.Core.Resources.backarrow.svg" Width="30" Height="30" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label VerticalOptions="Start" HorizontalOptions="Start" Margin="20,60,10,0" FontSize="24"  MaxLines="2" Text="Clima" TextColor="Black" FontFamily="BoldFont" CharacterSpacing="0.3" FontAttributes="Bold"/>
+            <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto">
+
+                <Label VerticalOptions="Center" HorizontalOptions="End" Margin="0,30,10,0" FontSize="60"  MaxLines="2" Text="29°" TextColor="LightGray" FontFamily="BoldFont" CharacterSpacing="0.3" FontAttributes="Bold"/>
+                <forms:AnimationView
+                        x:Name="AnimationView"
+                        Grid.Row="1"
+                        Animation="weatheranimation.json"
+                        AutoPlay="True"
+                        HeightRequest="400"
+                        RepeatMode="Infinite"
+                        Scale="{OnIdiom Phone=1.0,
+                                        Tablet=1.2}"
+                        TranslationY="-35"
+                        VerticalOptions="Start"
+                        WidthRequest="400" />
+
+                <Grid Grid.Row="2" RowDefinitions="Auto" ColumnDefinitions="*,2,*">
+                    <Label Grid.Row="0" TextColor="Black" HorizontalOptions="End" Margin="0,30,10,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Miami" FontSize="20" FontAttributes="Bold"/>
+                                 <Span Text="&#10;"/>
+                                <Span Text="7 julio | 11:50" FontSize="12" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <BoxView Grid.Column="1" Margin="0,30,0,0" WidthRequest="2" VerticalOptions="Fill" HorizontalOptions="Start" BackgroundColor="Black"/>
+                    <Label Grid.Row="0" Grid.Column="2" TextColor="Black" HorizontalOptions="Start" Margin="10,30,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Max: " FontAttributes="Bold" FontSize="14"/>
+                                <Span Text="33°" FontSize="14"/>
+                                 <Span Text="&#10;"/>
+                                <Span Text="Min: 33°" FontAttributes="Bold" />
+                                <Span Text="19°" FontSize="14"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

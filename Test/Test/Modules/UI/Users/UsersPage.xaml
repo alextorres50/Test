@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:svg="clr-namespace:Xamarin.Forms.Svg;assembly=SvgImageSource"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="White"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Test.Modules.UI.Users.UsersPage">
+    <ContentPage.Content>
+
+        <Grid RowSpacing="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Image  HorizontalOptions="Start" VerticalOptions="Start" Margin="15,20,0,0">
+                <Image.Source>
+                    <svg:SvgImageSource Source="Test.Core.Resources.backarrow.svg" Width="30" Height="30" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label VerticalOptions="Start" HorizontalOptions="Start" Margin="20,60,10,0" FontSize="24"  MaxLines="2" Text="Cámara" TextColor="Black" FontFamily="BoldFont" CharacterSpacing="0.3" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,100,15,0">
+                <Label VerticalOptions="Center" FontSize="{OnPlatform Android=14,iOS=14}"  MaxLines="2" Text="Agregar visitante:" TextColor="Black" FontFamily="BoldFont" CharacterSpacing="0.3" FontAttributes="Bold"/>
+
+                <Image  HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.Source>
+                        <svg:SvgImageSource Source="Test.Core.Resources.addbutton.svg" Width="30" Height="30" />
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="{Binding .}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <CollectionView BackgroundColor="Transparent" ItemsSource="{Binding ListUsers}" Grid.Row="1"   
+                x:Name="list" Margin="0,40,0,0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                        Span="1" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="0" x:Name="Card" ColumnSpacing="0" Margin="{OnPlatform Android='24,5.2,0,0',iOS='24,5.2,0,0'}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickCardCommand}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <yummy:PancakeView Grid.Column="1"  BackgroundColor="Black"  CornerRadius="{OnPlatform Android='10,10,10,10',iOS='14,14,14,14'}"  Margin="{OnPlatform Android='48,20,13.3,10',iOS='48,40,12.3,19'}" Opacity="0.50" >
+                                <yummy:PancakeView.Shadow>
+                                    <yummy:DropShadow Color="#000000"  BlurRadius="{x:OnPlatform iOS=20,Android=8}" />
+                                </yummy:PancakeView.Shadow>
+                            </yummy:PancakeView>
+                            <ui:MaterialCard Grid.Column="1" BackgroundColor="{Binding BackgroundColor}" Elevation="{OnPlatform Android=0,iOS=0}" CornerRadius="{OnPlatform Android=10,iOS=14}" HasShadow="False" Margin="{OnPlatform Android='38,6,12.4,0',iOS='38,6,12.4,0'}" Padding="0" BorderColor="{Binding BorderColor}">
+                                <Grid RowSpacing="0" ColumnSpacing="0" VerticalOptions="Center" Margin="{OnPlatform Android='17,10,10.6,14',iOS='17,10,10.6,14'}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label FontSize="{OnPlatform Android=14,iOS=14}" Margin="{OnPlatform Android='20,0,80,0',iOS='20,0,80,0'}" MaxLines="2" Text="{Binding Name}" TextColor="{Binding TextColor}" FontFamily="BoldFont" CharacterSpacing="0.3" FontAttributes="Bold"/>
+
+                                    <Label Grid.Row="1" FontSize="{OnPlatform Android=12,iOS=12}" Margin="{OnPlatform Android='20,0,80,0',iOS='20,0,80,0'}"  MaxLines="3" Text="{Binding Date}" TextColor="Black"  Opacity="0.60" CharacterSpacing="0.52" FontFamily="LightFont"/>
+
+                                    <Label Grid.Row="2" FontSize="{OnPlatform Android=12,iOS=12}" Margin="{OnPlatform Android='20,0,80,0',iOS='20,0,80,0'}"  MaxLines="3" Text="{Binding Hur}" TextColor="Black"  Opacity="0.60" CharacterSpacing="0.52" FontFamily="LightFont"/>
+
+                                    <Grid Grid.Column="1" ColumnSpacing="15" ColumnDefinitions="Auto,Auto" VerticalOptions="Center">
+
+                                        <Image  HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Image.Source>
+                                                <svg:SvgImageSource Source="Test.Core.Resources.editbutton.svg" Width="30" Height="30" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding EditCommand}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Image.Source>
+                                                <svg:SvgImageSource Source="Test.Core.Resources.deletebutton.svg" Width="30" Height="30" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DeleteCommand}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                    </Grid>
+                                </Grid>
+                            </ui:MaterialCard>
+                            <StackLayout Spacing="0" HorizontalOptions="Start" Grid.Column="1" HeightRequest="80" Margin="{OnPlatform Android='18,7,0,0',iOS='18,7,0,0'}">
+                                <xct:AvatarView  Source="{Binding Image}" HeightRequest="40" WidthRequest="40" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
