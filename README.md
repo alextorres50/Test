@@ -38,30 +38,27 @@ pub get
 ```bash
 ├── Core
 │   ├── Constants "Constants Files"
+│   ├── Converters "Data Converter"
 │   ├── Helpers "Helper Methods (Usually static methods)"
-│   ├── Services "Shared services in all project",
-│            "Dependency Injection"
-├── Data
-│   ├── Repositories "Implementation of the repositories",
-│   │         "They can be grouped by modules"
-│   └── DataSource 
-│       ├── Local "Model Files used to local information"
-│       │   
-│       └── Remote "Model Files used to parse remote information"
-│  
-├── Presentation
-│   └── Module "Parent module, Ex. Login, Profile, Home, etc."
-│       └── SubModule
-│           ├── Views
-│           └── ViewModels 
-├── Domain
-│   ├── Models "Models used by the modules"
-│   └── Repositories "Definition of the repositories used by the modules (Interfaces)"
+│   ├── Locator "used to registry DryIoC MVVM Library"
+│   ├── Models "Models used to WebApi Response, Local Data Storage"
+│   ├── Router "Static string to Routing Navigation"
+│   ├── Resources "Image and Files used as Resources"
+│   ├── Services "Shared services in all project", "Dependency Injection"         
+│   └── UI "CustomViews and Custom Controls"
+│
+├── Modules
+│   ├── Models "Models used to ViewModels"
+│   ├── Repositories "Definition of the repositories used by the modules (Interfaces)"
+│   ├── UI "Pages"
+│   ├──ViewModels "ViewModels"
 │ 
-└── Resources "Assets used on Application"
-    ├── Fonts
-    ├── Images
-    └── Styles
+├── Properties
+│   └── AssemblyInfo
+│   
+│ 
+└── Assets "Assets used on Application"
+    └── i18n
 ``` 
 
 
