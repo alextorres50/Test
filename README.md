@@ -16,7 +16,7 @@ Use the Xamarin [5.0.0.2545](https://visualstudio.microsoft.com/es/vs/mac/) or m
 2. Open with the lastest Visual Studio or Visual Studio Mac
 3. Restore Packages.
 ```bash
-pub get
+ Right Click on Main Project -> Restore Nuget Packages
 ```
 4. Build or Run the project on prefer platform (Android | iOs)
 
